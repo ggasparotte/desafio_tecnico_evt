@@ -1,4 +1,4 @@
-# Desafio de Integração - XML e JSON
+# Consultas e Pacientes - XML e JSON
 Este repositório contém a modelagem de dados em XML e JSON para gerenciamento de pacientes e consultas médicas. 
 
 
