@@ -1,0 +1,179 @@
+{  
+  "openapi": "3.0.0",  
+  "info": {  
+    "title": "API de Gestão de Pacientes e Consultas",  
+    "description": "API para gerenciamento de informações de pacientes e consultas médicas.",  
+    "version": "1.0.0"  
+  },   
+  "paths": {  
+    "/paciente/{id}": {  
+      "get": {  
+        "summary": "Recupera os dados de um paciente",  
+        "parameters": [  
+          {  
+            "name": "id",  
+            "in": "path",  
+            "required": true,  
+            "description": "ID do paciente",  
+            "schema": {  
+              "type": "integer"  
+            }  
+          }  
+        ],  
+        "responses": {  
+          "200": {  
+            "description": "Dados do paciente recuperados com sucesso",  
+            "content": {  
+              "application/json": {  
+                "schema": {  
+                  "type": "object",  
+                  "properties": {  
+                    "paciente": {  
+                      "type": "object",  
+                      "properties": {  
+                        "id": {  
+                          "type": "integer"  
+                        },  
+                        "nome": {  
+                          "type": "string"  
+                        },  
+                        "dataNascimento": {  
+                          "type": "string",  
+                          "format": "date"  
+                        },  
+                        "sexo": {  
+                          "type": "string"  
+                        },  
+                        "telefone": {  
+                          "type": "string"  
+                        },  
+                        "email": {  
+                          "type": "string"  
+                        },  
+                        "convenio": {  
+                          "type": "object",  
+                          "properties": {  
+                            "id": {  
+                              "type": "integer"  
+                            },  
+                            "nome": {  
+                              "type": "string"  
+                            },  
+                            "dataInicio": {  
+                              "type": "string",  
+                              "format": "date"  
+                            },  
+                            "dataFim": {  
+                              "type": "string",  
+                              "format": "date"  
+                            }  
+                          }  
+                        }  
+                      }  
+                    }  
+                  }  
+                }  
+              }  
+            }  
+          },  
+          "404": {  
+            "description": "Paciente não encontrado"  
+          }  
+        }  
+      }  
+    },  
+    "/consulta": {  
+      "post": {  
+        "summary": "Registra uma nova consulta",  
+        "requestBody": {  
+          "required": true,  
+          "content": {  
+            "application/json": {  
+              "schema": {  
+                "type": "object",  
+                "properties": {  
+                  "consulta": {  
+                    "type": "object",  
+                    "properties": {  
+                      "pacienteId": {  
+                        "type": "integer"  
+                      },  
+                      "medicoId": {  
+                        "type": "integer"  
+                      },  
+                      "dataConsulta": {  
+                        "type": "string",  
+                        "format": "date"  
+                      },  
+                      "especialidade": {  
+                        "type": "string"  
+                      },  
+                      "status": {  
+                        "type": "string"  
+                      },  
+                      "observacoes": {  
+                        "type": "string"  
+                      },  
+                      "dataRegistro": {  
+                        "type": "string",  
+                        "format": "date"  
+                      }  
+                    }  
+                  }  
+                }  
+              }  
+            }  
+          },  
+          "responses": {  
+            "201": {  
+              "description": "Consulta registrada com sucesso",  
+              "content": {  
+                "application/json": {  
+                  "schema": {  
+                    "type": "object",  
+                    "properties": {  
+                      "consulta": {  
+                        "type": "object",  
+                        "properties": {  
+                          "id": {  
+                            "type": "integer"  
+                          },  
+                          "pacienteId": {  
+                            "type": "integer"  
+                          },  
+                          "medicoId": {  
+                            "type": "integer"  
+                          },  
+                          "dataConsulta": {  
+                            "type": "string",  
+                            "format": "date"  
+                          },  
+                          "especialidade": {  
+                            "type": "string"  
+                          },  
+                          "status": {  
+                            "type": "string"  
+                          },  
+                          "observacoes": {  
+                            "type": "string"  
+                          },  
+                          "dataRegistro": {  
+                            "type": "string",  
+                            "format": "date"  
+                          }  
+                        }  
+                      }  
+                    }  
+                  }  
+                }  
+              }  
+            },  
+            "400": {  
+              "description": "Dados inválidos fornecidos"  
+            }  
+          }  
+        }  
+      }  
+    }  
+  }  
+}
